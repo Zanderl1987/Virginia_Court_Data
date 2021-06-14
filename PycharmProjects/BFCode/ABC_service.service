@@ -1,0 +1,12 @@
+[Unit]
+Description=Gunicorn instance to serve ABC Web Tool
+After=network.target
+
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/var/www/ABC/BFCode
+Environment="PATH=/home/ubuntu/.virtualenvs/abc_env/bin"
+ExecStart=/home/ubuntu/.virtualenvs/abc_env/bin/gunicorn --config "/home/ubuntu/.virtualenvs/abc_env/lib/python3.7/site-packages/gunicorn/config.py" --workers 1 --bind unix:/var/www/ABC/BFCode/sandbox.sock -m 002 wsgi:app
+[Instalil]
+WantedBy=multi-user.target

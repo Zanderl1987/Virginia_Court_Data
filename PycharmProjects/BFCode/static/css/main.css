@@ -1,0 +1,21 @@
+html, body {
+    background-color: rgb(255, 255, 255);
+}
+
+.navbar{
+
+    background-color: rgb(255, 255, 255);
+    border-bottom: rgb(122, 114, 114) 3px solid;
+    opacity: 0.95;
+    z-index: 10000;
+
+}
+
+.navbar-collapse{
+    display: block;
+}
+.navbar li{
+    padding-right: 30px;
+}
+
+

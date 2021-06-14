@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+
+
+{% block styles %}
+{{super()}}
+
+<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans|Quicksand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{url_for('static',filename='css/support.css')}}">
+
+{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid">
+	<div class="cd-header">
+		<br>
+		<a class="nav-link" href="{{ url_for('support') }}">
+			<div class="row">
+				<h1 class='title'>&nbsp;&nbsp;FAQ&nbsp;&nbsp;</h1>
+				<img src="{{url_for('static',filename='img/question-mark.png')}}" width="50" height="50">
+			</div>
+		</a>
+	</div>
+
+<div class="row">
+	<form class="form-contact" method="POST" action="/dashboard">
+		<button id="launch_tour" class="btn btn-lg btn-danger btn-block" type="submit" >Launch Tutorial</button>
+	</form>
+</div>
+
+<div class="row">
+	<p>Below you will find questions frequently asked about how the Web Information Tool (WIT) system works. Please take into account that the
+		answers are a summary only. If you require further assistance, please contact the developers through the contact
+		page.</p>
+	<br>
+</div>
+
+<div class="accordion" id="accordion">
+	<div class="card">
+		<div class="card-header" id="headingZero">
+			<h5 class="mb-0">
+				<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseZero"
+					aria-expanded="true" aria-controls="collapseZero">
+					I keep being told there is not enough data to show my metrics. Why is that?
+				</button>
+			 </h5>
+		</div>
+
+		<div id="collapseZero" class="collapse" aria-labelledby="headingZero" data-parent="#accordion">
+			<div class="card-body">
+				Answer1
+			</div>
+		</div>
+	</div>
+
+	<div class="card">
+		<div class="card-header" id="headingOne">
+			<h5 class="mb-0">
+				<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne"
+					aria-expanded="true" aria-controls="collapseOne">
+					Why does the A1C value show but the rest of the glucose variability screen does not?
+				</button>
+			</h5>
+		</div>
+
+		<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+			<div class="card-body">
+				Answer2
+			</div>
+		</div>
+	</div>
+
+	<div class="card">
+		<div class="card-header" id="headingTwo">
+			<h5 class="mb-0">
+				<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+					aria-expanded="false" aria-controls="collapseTwo">
+					I never see the low/high BG risk indices screen. Why is that?
+				</button>
+			</h5>
+		</div>
+		<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+			<div class="card-body">
+				Answer3
+			</div>
+		</div>
+	</div>
+
+</div>
+</div>
+
+{% endblock %}
+{% block extraScripts %}
+  
+{% endblock %}

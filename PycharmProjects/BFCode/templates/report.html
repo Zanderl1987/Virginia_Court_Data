@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Report</title>
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- FONT AWESOME -->
+  <script src="https://kit.fontawesome.com/5594aee0e2.js" crossorigin="anonymous"></script>
+  <!-- CUSTOM CSS -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Quicksand&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="container p-4">
+        <div class="container" id="firstRow">
+            <div class="row" id="first">
+                <div style='float:left'>
+                    <img src="data:image/png;base64,{{ logo_string }}" width="150px">
+                </div>
+                <div style='float:right'>
+                    <h6>User: {{ name }}</h6>
+                    <h6>Date range: {{ dateRange }}</h6>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="container" id="firstRow_b">
+            <div class="row" id="first_b">
+                <ul>
+                    <h5><strong>Simulation options</h5></strong>
+                </ul>
+                <br>
+                <ul>
+                    <li><h6>AP system: <strong>{{ apSel_rep }}</strong></h6></li>
+                    <li><h6>Adjust manual boluses: <strong>{{ adjIns_rep }}</strong></h6></li>
+                    <li><h6>Generate manual boluses: <strong>{{ genIns_rep }}</strong></h6></li>
+                    <li><h6>Adjust detected HTs: <strong>{{ adjHTs_rep }}</strong></h6></li>
+                    <li><h6>Generate HTs: <strong>{{ genHTs_rep }}</strong></h6></li>
+                </ul>
+            </div>
+        </div>
+        <hr />
+        <div class="container" id="secondRow">
+            <div class="row" id="second">
+                <ul>
+                    <h5><strong>Glucose chart</strong></h5>
+                </ul>
+                <p class="aligncenter">
+                    <img src="data:image/png;base64,{{ gluc_string }}" width="650px" style = "display:block; margin-left: auto; margin-right: auto;">
+                </p>
+            </div>   
+        </div>
+        <hr />
+        <div class="container" id="thirdRow">
+            <div class="row" id="third">
+                <ul>
+                    <h5><strong>Time in Range</strong></h5>
+                </ul>
+                <table>
+                    <tr>
+                        <td><img src="data:image/png;base64,{{ pie_string }}" width="300px" height="300px"></td>
+                        <td>
+                            <div class="table align-middle">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col"></th>
+                                            <th scope="col">%&lt;70 (blue)</th>
+                                            <th scope="col">%[70,180] (green)</th>
+                                            <th scope="col">%[180,250] (yellow)</th>
+                                            <th scope="col">%&gt;250 (red)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">Original</th>
+                                            <td><p>{{ o_70 }}</p></td>
+                                            <td><p>{{ o_70180 }}</p></td>
+                                            <td><p>{{ o_180250 }}</p></td>
+                                            <td><p>{{ o_250 }}</p></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Replay</th>
+                                            <td><p>{{ r_70 }}</p></td>
+                                            <td><p>{{ r_70180 }}</p></td>
+                                            <td><p>{{ r_180250 }}</p></td>
+                                            <td><p>{{ r_250 }}</p></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Diff</th>
+                                            <td><p>{{ d_70 }}</p></td>
+                                            <td><p>{{ d_70180 }}</p></td>
+                                            <td><p>{{ d_180250 }}</p></td>
+                                            <td><p>{{ d_250 }}</p></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <hr />
+        <br>
+        <div class="container" id="forthRow">
+            <div class="row" id="forth">
+                <ul>
+                    <h5><strong>More details</strong></h5>
+                </ul>
+                <div class="table align-middle">
+                    <table style="width:900px;">
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">TDI</th>
+                                <th scope="col">TDB</th>
+                                <th scope="col">Variance</th>
+                                <th scope="col">Hypo risk</th>
+                                <th scope="col">Hyper risk</th>
+                                <th scope="col"># HTs</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Original</th>
+                                <td><p>{{ o_tdi }}</p></td>
+                                <td><p>{{ o_tdb }}</p></td>
+                                <td><p>{{ o_var }}</p></td>
+                                <td><p>{{ o_hypor }}</p></td>
+                                <td><p>{{ o_hyper }}</p></td>
+                                <td><p>{{ o_ht }}</p></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Replay</th>
+                                <td><p>{{ r_tdi }}</p></td>
+                                <td><p>{{ r_tdb }}</p></td>
+                                <td><p>{{ r_var }}</p></td>
+                                <td><p>{{ r_hypor }}</p></td>
+                                <td><p>{{ r_hyper }}</p></td>
+                                <td><p>{{ r_ht }}</p></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Difference</th>
+                                <td><p>{{ d_tdi }}</p></td>
+                                <td><p>{{ d_tdb }}</p></td>
+                                <td><p>{{ d_var }}</p></td>
+                                <td><p>{{ d_hypor }}</p></td>
+                                <td><p>{{ d_hyper }}</p></td>
+                                <td><p>{{ d_ht }}</p></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="container" id="fifthRow">
+            <div class="row" id="fifth">
+                {% if bProfile_string %}
+                <hr />
+                <ul>
+                    <h5><strong>Basal profiles</strong></h5>
+                </ul>
+                {% set ii= namespace(value=0) %}
+                {% for bProfile in bProfile_string %}
+                <ul>
+                    <li><h6>Date range: {{bProfile_dates[ii.value]}}</h6></li>
+                </ul>
+                <img src="data:image/png;base64,{{ bProfile }}" width="600px" style = "display:block; margin-left: auto; margin-right: auto;">
+                <br>
+                <br>
+                <div class="table align-middle">
+                    <table style="width:800px;">
+                        <thead>
+                            <tr>
+                                <th scope="col">Time interval</th>
+                                <th scope="col">Original [U/h]</th>
+                                <th scope="col">Replay [U/h]</th>
+                                <th scope="col">Difference</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% set qq= namespace(value=0) %}
+                            {% for bp in bp_orig_t[ii.value] %}
+                            <tr>
+                            <th scope="row"> {{ bp }} </th>
+                            <td><p> {{ bp_orig_v[ii.value][qq.value] }} </p></td>
+                            <td><p> {{ bp_replay_v[ii.value][qq.value] }} </p></td>
+                            <td><p> {{ bp_diff[ii.value][qq.value] }} %</p></td>
+                            </tr>
+                            {% set qq.value = qq.value + 1 %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% set ii.value = ii.value + 1 %}
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+        <hr />
+        <div class="container" id="sixthRow">
+            <div class="row" id="sixth">
+                {% if crProfile_string %}
+                <hr />
+                <ul>
+                    <h5><strong>CR profiles</strong></h5>
+                </ul>
+                {% set ii= namespace(value=0) %}
+                {% for crProfile in crProfile_string %}
+                <ul>
+                    <li><h6>{{crProfile_dates[ii.value]}}</h6></li>
+                </ul>
+                <img src="data:image/png;base64,{{ crProfile }}" width="600px" style = "display:block; margin-left: auto; margin-right: auto;">
+                <br>
+                <br>
+                <div class="table align-middle">
+                    <table style="width:800px;">
+                        <thead>
+                            <tr>
+                                <th scope="col">Time interval</th>
+                                <th scope="col">Original [g/U]</th>
+                                <th scope="col">Replay [g/U]</th>
+                                <th scope="col">Difference</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% set qq= namespace(value=0) %}
+                            {% for cr in cr_orig_t[ii.value] %}
+                            <tr>
+                            <th scope="row"> {{ cr }} </th>
+                            <td><p> {{ cr_orig_v[ii.value][qq.value] }} </p></td>
+                            <td><p> {{ cr_replay_v[ii.value][qq.value] }} </p></td>
+                            <td><p> {{ cr_diff[ii.value][qq.value] }} %</p></td>
+                            </tr>
+                            {% set qq.value = qq.value + 1 %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% set ii.value = ii.value + 1 %}
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+        <hr />
+        <div class="container" id="seventhRow">
+            <div class="row" id="seventh">
+                {% if cfProfile_string %}
+                <hr />
+                <ul>
+                    <h5><strong>CF profiles</strong></h5>
+                </ul>
+                {% set ii= namespace(value=0) %}
+                {% for cfProfile in cfProfile_string %}
+                <ul>
+                    <li><h6>{{cfProfile_dates[ii.value]}}</h6></li>
+                </ul>
+                <img src="data:image/png;base64,{{ cfProfile }}" width="600px" style = "display:block; margin-left: auto; margin-right: auto;">
+                <br>
+                <br>
+                <div class="table align-middle">
+                    <table style="width:800px;">
+                        <thead>
+                            <tr>
+                                <th scope="col">Time interval</th>
+                                <th scope="col">Original [mg/dl/U]</th>
+                                <th scope="col">Replay [mg/dl/U]</th>
+                                <th scope="col">Difference</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% set qq= namespace(value=0) %}
+                            {% for cf in cf_orig_t[ii.value] %}
+                            <tr>
+                            <th scope="row"> {{ cf }} </th>
+                            <td><p> {{ cf_orig_v[ii.value][qq.value] }} </p></td>
+                            <td><p> {{ cf_replay_v[ii.value][qq.value] }} </p></td>
+                            <td><p> {{ cf_diff[ii.value][qq.value] }} %</p></td>
+                            </tr>
+                            {% set qq.value = qq.value + 1 %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% set ii.value = ii.value + 1 %}
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+        <hr />
+        <div class="container" id="eighthRow">
+            <div class="row" id="eighth">
+                {% if mProfile_string %}
+                <hr />
+                <ul>
+                    <h5><strong>Meals</strong></h5>
+                </ul>
+                {% set ii= namespace(value=0) %}
+                {% for mProfile in mProfile_string %}
+                <ul>
+                    <li><h6>{{mProfile_dates[ii.value]}}</h6></li>
+                </ul>
+                <img src="data:image/png;base64,{{ mProfile }}" width="600px" style = "display:block; margin-left: auto; margin-right: auto;">
+                <br>
+                <br>
+                <div class="table align-middle">
+                    <table style="width:800px;">
+                        <thead>
+                            <tr>
+                                <th scope="col">Meal</th>
+                                <th scope="col">Original</th>
+                                <th scope="col">Replay</th>
+                            </tr>
+                        </thead>
+                        {% set qq= namespace(value=0) %}
+                        {% for meal in m_orig_t[ii.value] %}
+                        <tr>
+                        <th scope="row"> {{ qq.value+1 }} </th>                            
+                        <td><p> Time: {{ meal }}; Carbs: {{ m_orig_v[ii.value][qq.value] }} g</p></td>
+                        <td><p> Time: {{ m_replay_t[ii.value][qq.value] }}; Carbs: {{ m_replay_v[ii.value][qq.value] }} g</p></td>
+                        </tr>
+                        {% set qq.value = qq.value + 1 %}
+                        {% endfor %}
+                    </table>
+                </div>
+                {% set ii.value = ii.value + 1 %}
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+        <div class="container" id="row_extra">
+            <div class="row" id="extra">
+                <div class="card text-white bg-secondary" style="width:100%; margin-top: 5px; margin-bottom: 5px">
+                    <div class="card-body">
+                        <h5 class="card-title">IMPORTANT</h5>
+                        <p class="card-text">Please speak with your health care provider prior to making changes to your treatment parameters.</p>
+                    </div>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>        
+
+</body>

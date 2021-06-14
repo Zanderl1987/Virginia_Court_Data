@@ -1,0 +1,40 @@
+div.cd-header {
+  height: 10em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+p {
+    display: block;
+    font-family: 'Quicksand', sans-serif;
+    margin-top: 2em;
+    margin-bottom: 0em;
+    margin-left: 0em;
+    margin-right: 0em;
+    text-align:left;
+    color:black;
+  }
+
+h1 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 30px;
+    text-align: center;
+
+}
+.title{ 
+    color:#3da5e6;
+    margin-top: 0.2em;
+}
+.helper {
+  display: inline-block;
+  height: auto;
+  vertical-align: middle;
+}
+
+h5 {
+    text-align:center
+   }
+
+
+
